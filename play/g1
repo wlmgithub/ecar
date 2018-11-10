@@ -1,0 +1,17 @@
+
+def do_something_with(x):
+  print(x)
+
+def fetch_squares_1(max_root):
+  squares = []
+  for x in range(max_root):
+    squares.append(x**2) 
+  return squares
+
+def fetch_squares(max_root):
+  for x in range(max_root):
+    yield (x**2) 
+
+MAX = 51
+for square in fetch_squares(MAX):
+  do_something_with(square)

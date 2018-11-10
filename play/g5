@@ -1,0 +1,52 @@
+import pprint
+import re
+
+class Money:
+  def __init__(self, dollars, cents):
+    self.dollars = dollars
+    self.cents = cents
+
+  def __repr__(self):
+    return 'dollar: {} - cents: {}'.format(self.dollars, self.cents)
+
+  @classmethod
+  def from_string(cls, amount):
+    p = re.compile(r'^\$(?P<dollars>\d+)\.(?P<cents>\d+)$')
+    m = p.search(amount)
+    if not m:
+      raise ValueError('Invalid amount: {}'.format(amount))
+    return cls(m.group('dollars'), m.group('cents'))
+
+
+
+class TipMoney(Money):
+  """no need to have constructor here
+	already inherited
+  """
+#  def __init__(self, dollars, cents):
+#    super().__init__(dollars, cents)
+    
+  @classmethod
+  def from_pennies(cls, amount):
+    d = amount // 100
+    c = amount - d * 100 
+    return cls(d, c)
+    
+
+
+def main():
+  piggie = Money.from_string('$123.45')
+  pprint.pprint(piggie)
+
+  mym = Money(888,999)
+  print(mym)
+
+  tips = TipMoney(12,34)
+  print(tips)
+
+  tips2 = TipMoney.from_pennies(289)
+  print(tips2)
+  
+if __name__ == '__main__':
+  main()
+     

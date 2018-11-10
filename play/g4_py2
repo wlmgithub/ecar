@@ -1,0 +1,20 @@
+
+class Thermometer(object):
+  def __init__(self, celsius):
+    self.celsius = celsius
+
+  @property
+  def fahrenheit(self):
+    return  self.celsius * (9.0 / 5) + 32 
+
+  @fahrenheit.setter
+  def fahrenheit(self, val):
+    self.celsius =  (val - 32) * (5.0 / 9) 
+
+
+thermo = Thermometer(15)
+print(thermo.fahrenheit)
+thermo.fahrenheit = 68
+print(thermo.fahrenheit)
+print(thermo.celsius)
+
