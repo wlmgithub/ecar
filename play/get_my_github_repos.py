@@ -6,6 +6,9 @@ import requests
 
 import click
 
+#
+# curl   'https://api.github.com/users/wlmgithub/repos?per_page=1000&page=2'
+#
 BASE_URL = 'https://api.github.com/users/wlmgithub/repos?per_page=100'
 
 @click.command()
