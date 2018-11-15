@@ -1,0 +1,26 @@
+
+tree = {
+  'A': ['B', 'F'],
+  'B': ['C', 'D'],
+  'F': ['G', 'H'],
+}
+
+#tree = { 1: [2,3], 2:[4], 3: [5,6], 4:[6] }
+
+
+print(tree)
+
+def parse(node, tree):
+  if node not in tree:
+    yield [node]
+  else:
+    for next_node in tree[node]:
+      for r in parse(next_node, tree):
+        yield [node] + r
+
+g = parse('A', tree)
+#print(list(g))
+
+for p in list(g):
+  print(''.join(p))
+

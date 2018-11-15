@@ -1,0 +1,30 @@
+
+import heapq
+
+def g1():
+    for i in range(0, 30, 5):
+        yield i
+
+def g2():
+    for i in range(15, 25, 2):
+        yield i
+
+def g3():
+    for i in range(5, 30, 3):
+        yield i
+
+result_gen = heapq.merge(
+    g1(),
+    g2(),
+    g3(),
+)
+
+## convert it to list
+print list(result_gen)
+
+print('-----')
+## or simply iterate over it
+for x in result_gen:
+    print x
+
+

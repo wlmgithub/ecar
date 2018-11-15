@@ -1,0 +1,16 @@
+# python2 ok
+# python3 not
+
+class ListMetaclass(type):
+    def __new__(cls, name, bases, attrs):
+        attrs['add'] = lambda self, value: self.append(value)
+        return type.__new__(cls, name, bases, attrs)
+
+class MyList(list):
+    __metaclass__ = ListMetaclass # use ListMetaclass to customize class
+
+if __name__ == '__main__':
+    #c = MyClass()
+    l = MyList()
+    l.add(1)
+    print (l)

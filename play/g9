@@ -1,0 +1,8 @@
+from itertools import zip_longest
+
+keys = ['Safe', 'Bob', 'Thomas', 'foo', 'b0000']
+values = ['Hammad', 'Builder', 'Engine', 'bar', ]
+
+d = dict(zip_longest(keys, values))
+
+print(d)

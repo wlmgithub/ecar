@@ -1,0 +1,26 @@
+
+import random
+import heapq
+
+def gen1():
+    for i in random.sample(range(1,99), 3):
+        yield i
+
+def gen2():
+    for i in random.sample(range(1,99), 3):
+        yield i
+    
+    
+l1 = list(gen1())
+l2 = list(gen2())
+
+print('l1: ', l1)
+print('l2: ', l2)
+
+g = heapq.merge(
+    l1, 
+    l2,
+)
+
+
+print(list(g))

@@ -1,0 +1,27 @@
+import functools
+
+def caseit(upit = 'up', more = None):
+	def make_case(func):
+		@functools.wraps(func)
+		def wrapper(*args, **kwargs):
+			ret = func(*args, **kwargs)
+			if upit == 'up':
+				ret =  ret.upper()
+			else:
+				if  upit == 'low':
+					ret =  ret.lower()
+				else:
+					ret =  ret
+			if more:
+				ret = ret + '***' + more
+			return ret
+		return wrapper
+	return make_case
+
+@caseit(upit = 'low', more = '999')
+def bare(msg):
+	return msg
+
+
+m = bare('This is a msg')
+print(m)
