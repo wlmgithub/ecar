@@ -3,7 +3,7 @@ print(nums)
 
 count = 0
 for i, n in enumerate(nums):
-  if nums[i]:
+  if n:
     nums[count] = n
     count += 1
 
