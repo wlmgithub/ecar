@@ -10,8 +10,8 @@ class Node:
 
 
 	def paths(self):
-		if self is None:
-			yield 
+#		if self is None:
+#			yield 
 		if self.left is None and self.right is None:
 			yield (self.value)
 
