@@ -15,11 +15,10 @@ def get_paths(root):
 	if root.left is None and root.right is None: 
 		return  [root.value]
 
-	lst = []
-	for l in get_paths(root.right) + get_paths(root.left):
-#		print(root.value, l)
-		lst.append(root.value + ' ' + l)
-	return lst
+	paths = []
+	for path in get_paths(root.right) + get_paths(root.left):
+		paths.append(root.value + ' ' + path)
+	return paths
 
 
 a = Node('A')
