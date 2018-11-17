@@ -1,0 +1,47 @@
+
+class BinaryTree:
+	def __init__(self, value):
+		self.value = value
+		self.left= None
+		self.right= None
+
+	def __repr__(self):
+		return f'{self.value}'
+
+	def get_paths(self, root):
+		if root is None:
+			return []
+		if root.left is None and root.right is None:
+			return  [root.value]
+		lst = []
+		for l in self.get_paths(root.right) + self.get_paths(root.left):
+			print(root.value, l)
+			lst.append(root.value + ' ' + l)
+		return lst
+
+a = BinaryTree('A')
+b = BinaryTree('B')
+c = BinaryTree('C')
+d = BinaryTree('D')
+e = BinaryTree('E')
+f = BinaryTree('F')
+g = BinaryTree('G')
+h = BinaryTree('H')
+
+c.left = a
+c.right = b
+
+a.left = d
+a.right = e
+
+b.left = f
+b.right = g
+
+f.left = h
+
+p = c.get_paths(c)
+print(p)
+#print(list(p))
+
+
+
