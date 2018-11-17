@@ -17,7 +17,7 @@ def get_paths(root):
 
 	paths = []
 	for path in get_paths(root.right) + get_paths(root.left):
-		paths.append(root.value + ' ' + path)
+		paths.append( root.value + path )
 	return paths
 
 
