@@ -1,0 +1,50 @@
+
+class Node:
+	def __init__(self, value):
+		self.value = value
+		self.left= None
+		self.right= None
+
+	def __repr__(self):
+		return f'{self.value}'
+
+
+def get_paths(root):
+	if root is None:
+		return []
+	if root.left is None and root.right is None: 
+		return  [root.value]
+
+	lst = []
+	for l in get_paths(root.right) + get_paths(root.left):
+#		print(root.value, l)
+		lst.append(root.value + ' ' + l)
+	return lst
+
+
+a = Node('A')
+b = Node('B')
+c = Node('C')
+d = Node('D')
+e = Node('E')
+f = Node('F')
+g = Node('G')
+h = Node('H')
+
+c.left = a
+c.right = b
+
+a.left = d
+a.right = e
+
+b.left = f
+b.right = g
+
+f.left = h
+
+p = get_paths(c)
+print(p)
+#print(list(p))
+
+
+
