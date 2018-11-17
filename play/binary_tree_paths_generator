@@ -1,0 +1,49 @@
+
+class Node:
+	def __init__(self, value):
+		self.value = value
+		self.left= None
+		self.right= None
+
+	def __repr__(self):
+		return f'{self.value}'
+
+
+	def paths(self):
+		if self is None:
+			yield 
+		if self.left is None and self.right is None:
+			yield (self.value)
+
+		for child in (self.left, self.right):
+		#	print(child)
+			if child is not None:
+				for leaf_path in child.paths():
+					yield ( self.value ) + leaf_path 
+
+a = Node('A')
+b = Node('B')
+c = Node('C')
+d = Node('D')
+e = Node('E')
+f = Node('F')
+g = Node('G')
+h = Node('H')
+
+c.left = a
+c.right = b
+
+a.left = d
+a.right = e
+
+b.left = f
+b.right = g
+
+f.left = h
+
+p = c.paths()
+#print(p)
+print(list(p))
+
+
+
