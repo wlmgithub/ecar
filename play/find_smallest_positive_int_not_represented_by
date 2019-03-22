@@ -1,0 +1,23 @@
+# credit: https://www.geeksforgeeks.org/find-smallest-value-represented-sum-subset-given-array/
+'''
+IN: [1,2,5,7]
+OUT: 4
+
+IN: [1,2,2,5,7]
+OUT: 18
+'''
+
+def find_it(A):
+    res = 1
+    for n in A:
+        if n <= res:
+            res += n
+        else:
+            break
+    return res
+
+if __name__ == '__main__':
+    A = [1,2,5,7]
+    #A = [1,2,2,5,7]
+    res = find_it(A)
+    print(A, res)
