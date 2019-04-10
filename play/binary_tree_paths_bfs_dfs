@@ -1,0 +1,56 @@
+
+class Node:
+    def __init__(self, data=None, left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
+
+    def __repr__(self):
+        return f'{self.data}'
+
+
+def bfs(root):
+    res = []
+    to_visit = [root]
+    while to_visit:
+        node = to_visit.pop(0)
+        #print(node.data, end = ' ')
+        res.append(node.data)
+        if node.left:
+            to_visit.append(node.left)
+        if node.right:
+            to_visit.append(node.right)
+    return res
+
+def dfs(root):
+    if root is None:
+        return []
+    if root.left is None and root.right is None:
+         return[root.data]
+    paths = []
+    for path in dfs(root.left) + dfs(root.right):
+        paths.append( root.data + path )
+
+    return paths
+
+
+
+"""
+    a
+  b   c
+d  e  f
+
+"""
+
+d = Node('d')
+e = Node('e')
+f = Node('f')
+b = Node('b', d, e)
+c = Node('c', f)
+a = Node('a', b, c)
+
+
+print( bfs(a) )
+print( dfs(a) )
+
+
