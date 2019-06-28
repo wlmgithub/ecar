@@ -1,0 +1,42 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+nodeA = Node('A')
+nodeB = Node('B')
+nodeC = Node('C')
+
+nodeA.next = nodeB
+nodeB.next = nodeC
+
+
+def printme(node):
+    current_node = node
+    while current_node:
+        print(current_node.data)
+        current_node = current_node.next
+
+def reverse_me_0(root):
+    prev = None
+    current = root
+
+    while current:
+        next = current.next
+        current.next = prev
+        prev = current
+        current = next
+
+    return prev
+
+def reverse_me(root):
+    prev, current = None, root
+    while current:
+        current.next, prev, current = prev, current, current.next
+    return prev
+
+
+printme(nodeA)
+print('**********')
+printme(reverse_me(nodeA))
