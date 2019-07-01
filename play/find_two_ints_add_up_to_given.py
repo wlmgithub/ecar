@@ -17,10 +17,9 @@ def find_indexes(A, K):
 	hash_table = {}
 	for i, num in enumerate(A):
 	    if K - num in hash_table:
-	        return([hash_table[K - num], i])
-	        break
+	        return [hash_table[K - num], i]
 	    hash_table[num] = i
-	return([])
+	return []
 
 if __name__ == '__main__':
 
