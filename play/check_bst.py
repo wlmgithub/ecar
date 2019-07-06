@@ -64,3 +64,25 @@ print("Result if tree is BST = ", is_BST(root_true))
 # Result if tree is BST =  True
 
 
+root = Node(50)
+root.left = Node(30)
+root.right = Node(80)
+root.left.left = Node(20)
+root.left.right = Node(60) # False
+
+root.right.left = Node(70)
+root.right.right = Node(90)
+
+print("Result if tree is BST = ", is_BST(root))
+
+
+root = Node(50)
+root.left = Node(30)
+root.right = Node(80)
+root.left.left = Node(20)
+root.left.right = Node(45)  # True
+
+root.right.left = Node(70)
+root.right.right = Node(90)
+
+print("Result if tree is BST = ", is_BST(root))
