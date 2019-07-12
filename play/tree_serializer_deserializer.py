@@ -75,6 +75,17 @@ class TreeNode(object):
         self.right = None
 
 
+def print_tree(root):
+    q = [root]
+    while q:
+        node = q.pop(0)
+        print(f'{node.val}', end=' ')
+        if node.left:
+            q.append(node.left)
+        if node.right:
+            q.append(node.right)
+
+
 a = TreeNode(1)
 b = TreeNode(2)
 c = TreeNode(3)
@@ -108,6 +119,7 @@ assert codec.deserialize(codec.serialize(node)).left.left.val == 'left.left'
 print('###################')
 s = serialize(a)
 print( s )
+print_tree(a)
 print("**********")
 root = deserialize(s)
 print( serialize(root))
