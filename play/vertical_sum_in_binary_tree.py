@@ -1,6 +1,8 @@
 
 # https://stackoverflow.com/questions/14485255/vertical-sum-in-a-given-binary-tree
 
+# https://codereview.stackexchange.com/questions/151208/vertical-sum-in-a-given-binary-tree
+
 d = {}
 
 def traverse(node, hd):
