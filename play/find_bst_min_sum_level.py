@@ -49,11 +49,9 @@ if __name__ == '__main__':
                 ),
             Node(9)
             )
-    
-    
+
     print_tree(root)
-    
+
     r = level_order(root)
     print(r)
     print(r.index(min(r)))
-    
