@@ -38,8 +38,37 @@ def gen_matrix(rows, columns, bombs):
     for _ in range(rows):
         matrix.append([0 for _ in range(columns)])
 
+    # fill bomb positions
+    for position in get_positions(rows, columns, bombs):
+        i, j = position
+        matrix[i][j] = -1
+
+    print('1-------: ', matrix)
+
+
+#####
+#
+# https://github.com/Lintik/CodeFights-Arcade/tree/master/Intro/Island%20of%20Knowledge/Minesweeper
+#
+# https://knaidu.gitbooks.io/problem-solving/matrix/matrix/minesweeper.html
+#
+    r = [[0 for x in range(len(matrix[0]))] for y in range(len(matrix))]
     # TODO:  fill in non-0 cells
     #
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            for a in range(i-1,i+2):
+                for b in range(j-1,j+2):
+                    try:
+                        if a < 0 or b < 0:
+                            continue
+                        if matrix[i][j]:
+                            r[a][b] += 1
+                    except:
+                        continue
+            if matrix[i][j]: r[i][j] -= 1
+    return r
+
 
     return matrix
 
