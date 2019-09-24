@@ -1,4 +1,7 @@
 
+#
+# https://rosettacode.org/wiki/Topological_sort#Python
+# 
 ###############
 #
 # https://codeforces.com/blog/entry/16823
