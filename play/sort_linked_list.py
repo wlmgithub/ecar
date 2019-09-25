@@ -4,17 +4,22 @@
 class Solution:
   def sortList(self, head):
     def merge(l1, l2):
-      dummy = ListNode(0)
-      tail = dummy
-      while l1 and l2:
-        if l1.val > l2.val: l1, l2 = l2, l1
-        tail.next = l1
-        l1 = l1.next
-        tail = tail.next
-      tail.next = l1 if l1 else l2
-      return dummy.next
+      if not l1:
+        return l2
+      if not l2:
+        return l1
+      start = None
+      if l1.val < l2.val:
+        start = l1
+        start.next = merge(l1.next, l2)
+      else:
+        start = l2
+        start.next = merge(l1, l2.next)
+      return start
 
-    if not head or not head.next: return head
+#    if not head or not head.next: return head
+    if not head.next:
+        return  head
     slow = head
     fast = head.next
     while fast and fast.next:
