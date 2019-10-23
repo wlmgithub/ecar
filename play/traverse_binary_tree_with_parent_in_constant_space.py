@@ -102,6 +102,26 @@ def inorder(root):
         else:
             break
 
+# credit: http://www.algoqueue.com/algoqueue/default/view/8388608/inorder-traversal-of-bst-without-extra-space
+def morris(root):
+    prev = None
+    current = root
+    while current:
+        if current.left is None:
+            print(current.val, end=' ')
+            current = current.right
+        else:
+            prev = current.left
+            while prev.right is not None and prev.right != current:
+                prev = prev.right
+
+            if prev.right is None:
+                prev.right  = current
+                current = current.left
+            else:
+                prev.right = None
+                print(current.val, end=' ')
+                current = current.right
 
 
 
@@ -118,3 +138,5 @@ t1 = Node(5,
 # 5 2 6 1 3 8 7
 
 inorder(t1)
+print('\n===== morris traversal ===\n')
+morris(t1)
