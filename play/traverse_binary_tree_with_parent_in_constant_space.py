@@ -123,6 +123,33 @@ def morris(root):
                 print(current.val, end=' ')
                 current = current.right
 
+# credit: http://tech.technoflirt.com/2011/03/04/non-recursive-tree-traversal-in-on-using-constant-space/
+def use_parent(root):
+    last = None
+    current = root
+    while current:
+        if last == current.parent:
+            print(current.val, end=' ')
+            if current.left is not None:
+                last = current
+                current = current.left
+            elif current.right is not None:
+                last = current
+                current = current.right
+            else:
+                last = current
+                current = current.parent
+        elif last == current.left:
+            if current.right is not None:
+                last = current
+                current = current.right
+            else:
+                last = current
+                current = current.parent
+
+        elif last == current.right:
+            last = current
+            current = current.parent
 
 
 t1 = Node(5,
@@ -140,3 +167,5 @@ t1 = Node(5,
 inorder(t1)
 print('\n===== morris traversal ===\n')
 morris(t1)
+print('\n====== use parent  ====\n')
+use_parent(t1)
