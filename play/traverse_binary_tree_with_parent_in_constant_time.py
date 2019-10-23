@@ -1,3 +1,5 @@
+
+
 # Suppose you are given a binary tree where each node has a pointer to its
 # parent, left and right children, and an integer value. You want to print the
 # value at each node exactly once using O(1) memory. Design and implement an
@@ -10,7 +12,6 @@
 #    / \   \
 #   1   3   8
 #          /
-#         7
 
 
 
@@ -61,6 +62,45 @@ def print_tree(root):
 
 
 
+# credit: https://www.geeksforgeeks.org/inorder-non-threaded-binary-tree-traversal-without-recursion-or-stack/
+
+# Function to print inorder traversal
+# using parent pointer
+def inorder(root):
+    leftdone = False
+
+    # Start traversal from root
+    while root:
+
+        # If left child is not traversed,
+        # find the leftmost child
+        if leftdone == False:
+            while root.left:
+                root = root.left
+
+        # Print root's data
+        print(root.val, end = " ")
+
+        # Mark left as done
+        leftdone = True
+
+        # If right child exists
+        if root.right:
+            leftdone = False
+            root = root.right
+
+        # If right child doesn't exist, move to parent
+        elif root.parent:
+
+            # If this node is right child of its
+            # parent, visit parent's parent first
+            while root.parent and root == root.parent.right:
+                root = root.parent
+            if root.parent == None:
+                break
+            root = root.parent
+        else:
+            break
 
 
 
@@ -74,5 +114,7 @@ t1 = Node(5,
         Node(8,
             Node(7))))
 
-print_tree(t1)
+#print_tree(t1)
 # 5 2 6 1 3 8 7
+
+inorder(t1)
